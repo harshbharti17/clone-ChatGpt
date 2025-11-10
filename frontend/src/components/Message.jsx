@@ -41,6 +41,7 @@ const Message = ({ message }) => {
           <span className="text-xs text-gray-500 dark:text-[#b1a6c0]">
             {moment(message.timestamp).fromNow()}
           </span>
+          
         </div>
       )}
     </div>

@@ -78,7 +78,7 @@ const Chatbox = () => {
       {/* promt input box */}
 
       <form
-        className="bg-primary/20 dark:bg-[#583c79]/30 border border-primary dark:border-[#80609f]/30 rounded-full w-full max-w-2xl p-3 pl-4 mx-auto flex gap-4 items-center"
+        className="bg-primary/20 dark:bg-[#583c79]/30 border border-primary dark:border-[#80609f]/30 rounded-full w-full max-w-2xl p-3 pl-4 mx-auto flex gap-4 items-center "
         onSubmit={onSubmit}
       >
         <select
@@ -98,7 +98,7 @@ const Chatbox = () => {
           value={promt}
           type="text"
           placeholder="Type your promt here..."
-          className="flex-1 w-full outline-none "
+          className="flex-1 w-full outline-none  "
           required
         />
         <button disabled={loading}>
