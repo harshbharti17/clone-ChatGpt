@@ -3,6 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import connectDB from "./configs/db.js";
 import userRouter from "./routes/user.routes.js";
+import chatRouter from "./routes/chat.routes.js";
 
 const app = express();
 
@@ -13,11 +14,11 @@ app.use(cors());
 app.use(express.json());
 
 //Routes
-app.get("/", (req, res) => {
-  res.send("Server is Live!");
-});
+app.get("/", (req, res) => res.send("Server is Live!"));
 app.use("/api/user", userRouter);
+app.use("/api/chat", chatRouter);
 
+//Listening port
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
