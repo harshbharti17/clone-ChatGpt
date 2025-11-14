@@ -3,7 +3,7 @@ import { protect } from "../middlewares/auth.middleware.js";
 import {
   imageMessageController,
   textMessageController,
-} from "../controllers/message.controller";
+} from "../controllers/message.controller.js";
 
 const messageRouter = express.Router();
 

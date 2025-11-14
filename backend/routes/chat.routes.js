@@ -3,7 +3,7 @@ import {
   createChat,
   deleteChat,
   getChats,
-} from "../controllers/chat.controller";
+} from "../controllers/chat.controller.js";
 import { protect } from "../middlewares/auth.middleware.js";
 
 const chatRouter = express.Router();
