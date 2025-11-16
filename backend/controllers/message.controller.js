@@ -17,12 +17,12 @@ export const textMessageController = async (req, res) => {
       });
     }
 
-    const { chatId, promt } = req.body;
+    const { chatId, prompt } = req.body;
 
     const chat = await Chat.findOne({ userId, _id: chatId });
     chat.messages.push({
       role: "user",
-      content: promt,
+      content: prompt,
       timestamp: Date.now(),
       isImage: false,
     });
@@ -31,7 +31,7 @@ export const textMessageController = async (req, res) => {
       messages: [
         {
           role: "user",
-          content: promt,
+          content: prompt,
         },
       ],
     });
@@ -78,25 +78,26 @@ export const imageMessageController = async (req, res) => {
       });
     }
 
-    const { chatId, promt, isPublished } = req.body;
+    const { prompt, chatId, isPublished } = req.body;
     //find chat
     const chat = await Chat.findOne({ userId, _id: chatId });
+    console.log(chat);
 
     //push user message
     chat.messages.push({
       role: "user",
-      content: promt,
+      content: prompt,
       timestamp: Date.now(),
       isImage: false,
     });
 
-    //Encode the promt
-    const encodedPromt = encodeURIComponent(promt);
+    //Encode the prompt
+    const encodedPrompt = encodeURIComponent(prompt);
 
     //Construct Imagekit AI generation URL
     const generatedImageUrl = `${
       process.env.IMAGEKIT_URL_ENDPOINT
-    }/ik-genimg-promt-${encodedPromt}/quickgpt/${Date.now()}.png?tr=w-800,h-800`;
+    }/ik-genimg-prompt-${encodedPrompt}/quickgpt/${Date.now()}.png?tr=w-800,h-800`;
 
     //Trigger generation by fetching from Imagekit
     const aiImageResponse = await axios.get(generatedImageUrl, {
@@ -142,6 +143,7 @@ export const imageMessageController = async (req, res) => {
     res.json({
       success: false,
       message: error.message,
+      message: "hahua",
     });
   }
 };

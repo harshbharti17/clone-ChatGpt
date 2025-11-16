@@ -15,7 +15,7 @@ export const protect = async (req, res, next) => {
       });
     }
 
-    res.user = user;
+    req.user = user;
     next();
   } catch (error) {
     res.status(401).json({

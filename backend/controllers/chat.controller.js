@@ -9,7 +9,7 @@ export const createChat = async (req, res) => {
       userId,
       messages: [],
       name: "New Chat",
-      username: req.user.name,
+      userName: req.user.name,
     };
 
     await Chat.create(chatData);
@@ -21,6 +21,7 @@ export const createChat = async (req, res) => {
     res.json({
       success: false,
       message: error.message,
+      message:'not'
     });
   }
 };
